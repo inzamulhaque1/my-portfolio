@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import logo from "../assets/images/logo/logo-inz-wm.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,20 +46,24 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo - Single instance for all screen sizes */}
-          <img src={logo} alt="Logo" className="h-8 md:h-10" />
+          <Link to={'/'}><img src={logo} alt="Logo" className="h-8 md:h-10" /></Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center flex-1 space-x-8">
             {links.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
-                className={`font-semibold transition-colors duration-200 hover:text-sky-500 hover:underline hover:underline-offset-8 
-                  ${activeLink === link.href ? "text-[#FF014F] underline underline-offset-8" : "text-black"}`} // Apply active style
-                onClick={() => setActiveLink(link.href)} // Set active link
-              >
-                {link.label}
-              </a>
+  key={link.href}
+  href={link.href}
+  className={`font-semibold transition-colors duration-200 hover:text-sky-500 hover:underline hover:underline-offset-8 
+    ${activeLink === link.href ? "text-[#FF014F] underline underline-offset-8" : "text-black"}`} // Apply active style
+  onClick={(e) => {
+    e.preventDefault(); // Prevent default anchor link behavior
+    setActiveLink(link.href); // Set active link
+    document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+  }}
+>
+  {link.label}
+</a>
             ))}
           </div>
 

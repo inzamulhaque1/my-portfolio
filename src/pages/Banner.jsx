@@ -20,6 +20,7 @@ const Banner = () => {
         animate={{
           scale: [1, 1.2, 1],
           rotate: [0, 90, 0],
+          
         }}
         transition={{
           duration: 8,
