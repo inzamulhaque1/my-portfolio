@@ -1,34 +1,30 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { BiDownArrow } from "react-icons/bi";
 import myImage from "../assets/images/banner/my-img.png";
-// import myImage from "../assets/images/about/myimg.png";
 
 const Banner = () => {
-  const socialIcons = [
-    { Icon: FaGithub, link: "#" },
-    { Icon: FaLinkedin, link: "#" },
-    { Icon: FaTwitter, link: "#" },
-  ];
-
   return (
-    <div id="home" className="relative min-h-screen bg-gray-900 flex items-center justify-center overflow-hidden pt-[80px] md:pt-16 pb-12">
+    <div
+      id="home"
+      className="relative min-h-screen bg-gray-900 flex items-center justify-center overflow-hidden pt-[80px] md:pt-16 pb-12"
+    >
       {/* Animated background elements */}
       <motion.div
         className="absolute hidden md:block top-10 right-10 w-64 h-64 bg-[#FF014F] rounded-full mix-blend-multiply filter blur-xl opacity-70"
         animate={{
           scale: [1, 1.2, 1],
           rotate: [0, 90, 0],
-          
         }}
         transition={{
           duration: 8,
           repeat: Infinity,
         }}
+        style={{ pointerEvents: "none" }}  // Prevent pointer events on background
       />
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
           <motion.div
@@ -44,9 +40,13 @@ const Banner = () => {
               transition={{ delay: 0.4 }}
             >
               Hi, I'm <br />
-              <span className="text-[#FF014F] font-exo-2">Inzamul Haque Joy</span>
+              <span className="text-[#FF014F] font-exo-2">
+                Inzamul Haque Joy
+              </span>
               <br />
-              <span className="text-3xl font-playfair md:text-5xl">MERN Stack Developer</span>
+              <span className="text-3xl font-playfair md:text-5xl">
+                MERN Stack Developer
+              </span>
             </motion.h1>
 
             <motion.p
@@ -55,7 +55,8 @@ const Banner = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              Crafting Next-Level Web Experiences for a World That Never Stands Still.
+              Crafting Next-Level Web Experiences for a World That Never Stands
+              Still.
             </motion.p>
 
             {/* Social Icons */}
@@ -65,17 +66,35 @@ const Banner = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              {socialIcons.map(({ Icon, link }, index) => (
-                <motion.a
-                  key={index}
-                  href={link}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 bg-gray-800 text-[#FF014F] rounded-lg flex items-center justify-center hover:bg-[#FF014F] hover:text-white transition-colors"
-                >
-                  <Icon className="w-6 h-6" />
-                </motion.a>
-              ))}
+              {/* GitHub */}
+              <a
+                href="https://github.com/inzamulhaque1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white text-[#FF014F] rounded-full flex items-center justify-center hover:bg-[#FF014F] hover:text-white transition-colors"
+              >
+                <FaGithub className="w-6 h-6" />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/inzamul1002/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white text-[#FF014F] rounded-full flex items-center justify-center hover:bg-[#FF014F] hover:text-white transition-colors"
+              >
+                <FaLinkedin className="w-6 h-6" />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/au.inzamul/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white text-[#FF014F] rounded-full flex items-center justify-center hover:bg-[#FF014F] hover:text-white transition-colors"
+              >
+                <FaFacebook className="w-6 h-6" />
+              </a>
             </motion.div>
 
             {/* Scroll Indicator */}

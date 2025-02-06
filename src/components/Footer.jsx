@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import logo from "../assets/images/logo/logo-inz-wm.png";
 import { Link } from "react-router-dom";
-import { FaHome, FaUser, FaProjectDiagram, FaEnvelope } from "react-icons/fa"; // React Icons for menu links
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"; // React Icons for social links
+import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub } from "react-icons/fa"; // React Icons for menu links
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa"; // React Icons for social links
 
 const Footer = () => {
   const links = [
@@ -13,10 +13,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { href: "https://facebook.com", icon: <FaFacebook /> },
-    { href: "https://twitter.com", icon: <FaTwitter /> },
-    { href: "https://instagram.com", icon: <FaInstagram /> },
-    { href: "https://linkedin.com", icon: <FaLinkedin /> },
+    { href: "https://facebook.com/inzamulhaque1", icon: <FaFacebook /> },
+    { href: "https://x.com/inzamul12725", icon: <FaTwitter /> },
+    { href: "https://github.com/inzamulhaque1", icon: <FaGithub /> },
+    { href: "https://linkedin.com/in/inzamul1002/", icon: <FaLinkedin /> },
   ];
 
   return (
