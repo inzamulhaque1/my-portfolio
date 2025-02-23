@@ -62,7 +62,7 @@ const Banner = () => {
 
             <div className="">
             <a
-              href="/email.pdf"
+              href="/resume.pdf"
               download
               className="bg-[#FF014F] text-white px-4 py-2 rounded-lg text-sm hover:bg-opacity-90 transition-colors"
             >
