@@ -35,7 +35,7 @@ const screenshots = [
 
 const Project1Details = () => {
   return (
-    <div id="project1-details" className="mt-5 px-6 max-w-7xl mx-auto">
+    <div id="project1-details" className="mt-5 px-6 max-w-7xl mx-auto font-exo-2 ">
       {/* Back Button */}
       <Link to={'/'}>
         <button className="btn py-1 px-3 bg-[#FF014F] cursor-pointer rounded-2xl text-white font-bold my-3 flex justify-center items-center gap-2 fixed z-10">

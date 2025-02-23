@@ -73,7 +73,7 @@ const Contact = () => {
   
 
   return (
-    <div id="contact" className="w-9/12 m-11 mx-auto p-8 bg-white rounded-lg shadow-lg">
+    <div id="contact" className="w-9/12 m-11 mx-auto p-8 bg-white rounded-lg shadow-lg font-exo-2 ">
          {/* Success Modal */}
     {showModal && <SuccessModal />}
       {/* Overall Section Heading and Subheading */}

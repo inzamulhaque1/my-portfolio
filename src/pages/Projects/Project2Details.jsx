@@ -30,7 +30,7 @@ const screenshots = [
 
 const Project2Details = () => {
   return (
-    <div id="project2-details" className="mt-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div id="project2-details" className="mt-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto font-exo-2 ">
       <Link to={'/'}>
         <button className="btn py-2 px-4 bg-[#FF014F] cursor-pointer rounded-2xl text-white font-bold my-3 flex justify-center items-center gap-2 fixed z-10">
           <FaArrowLeft /> BACK

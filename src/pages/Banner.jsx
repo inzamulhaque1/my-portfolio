@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { BiDownArrow } from "react-icons/bi";
 import myImage from "../assets/images/banner/my-img.png";
+// import myImage from "../assets/images/about/myimg.png";
 
 const Banner = () => {
   return (
@@ -58,6 +59,16 @@ const Banner = () => {
               Crafting Next-Level Web Experiences for a World That Never Stands
               Still.
             </motion.p>
+
+            <div className="">
+            <a
+              href="/email.pdf"
+              download
+              className="bg-[#FF014F] text-white px-4 py-2 rounded-lg text-sm hover:bg-opacity-90 transition-colors"
+            >
+              Download Resume
+            </a>
+          </div>
 
             {/* Social Icons */}
             <motion.div

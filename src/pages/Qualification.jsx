@@ -93,15 +93,15 @@ import {
     ];
   
     return (
-      <div className="bg-gray-50 py-8 md:py-16">
+      <div id="qualification" className="bg-gray-50 py-8 font-exo-2  md:py-16">
         <section className="p-6 sm:p-8 lg:p-12 bg-white text-gray-800 rounded-lg shadow-lg max-w-6xl mx-auto">
           {/* Tab Navigation */}
           <div className="flex justify-center space-x-8 mb-8">
             <button
               onClick={() => setActiveTab("skills")}
               className={`py-3 px-6 font-semibold text-lg ${
-                activeTab === "skills" ? "border-b-4 border-[#FF014F]" : ""
-              } hover:text-[#FF014F] transition duration-300`}
+                activeTab === "skills" ? " bg-[#FF014F] text-white rounded-3xl " : ""
+              } hover:text-black transition duration-300`}
             >
               Skills
             </button>
@@ -109,9 +109,8 @@ import {
               onClick={() => setActiveTab("qualifications")}
               className={`py-3 px-6 font-semibold text-lg ${
                 activeTab === "qualifications"
-                  ? "border-b-4 border-[#FF014F]"
-                  : ""
-              } hover:text-[#FF014F] transition duration-300`}
+                  ? " bg-[#FF014F] text-white rounded-3xl " : ""
+              } hover:text-black transition duration-300`}
             >
               Educational Qualifications
             </button>

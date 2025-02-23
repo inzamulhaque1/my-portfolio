@@ -46,9 +46,9 @@ const Projects = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="projects" className="bg-gray-50 py-16 ">
+    <div id="projects" className="bg-gray-50 py-16 font-exo-2 ">
       <motion.h2
-        className="text-4xl font-extrabold text-center text-[#FF014F] mb-4"
+        className="text-4xl font-montserrat  font-extrabold text-center text-[#FF014F] mb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}

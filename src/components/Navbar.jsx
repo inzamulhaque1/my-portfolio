@@ -10,6 +10,7 @@ const Navbar = () => {
   const links = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
+    { href: "#qualification", label: "Qualification" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" }
   ];
@@ -70,7 +71,7 @@ const Navbar = () => {
           {/* Desktop Download Button */}
           <div className="hidden md:block">
             <a
-              href="/path-to-resume.pdf"
+              href="/email.pdf"
               download
               className="bg-[#FF014F] text-white px-4 py-2 rounded-lg text-sm hover:bg-opacity-90 transition-colors"
             >
@@ -81,7 +82,7 @@ const Navbar = () => {
           {/* Mobile Navigation Controls */}
           <div className="flex items-center md:hidden">
             <a
-              href="/path-to-resume.pdf"
+              href="/email.pdf"
               download
               className="bg-[#FF014F] text-white px-3 py-1.5 rounded-lg text-sm mr-4 hover:bg-opacity-90 transition-colors"
             >
