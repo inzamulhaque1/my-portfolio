@@ -64,7 +64,7 @@ const Banner = () => {
             <a
               href="/resume.pdf"
               download
-              className="bg-[#FF014F] text-white px-4 py-2 rounded-lg text-sm hover:bg-opacity-90 transition-colors"
+              className="bg-[#FF014F] text-white px-4 py-2 rounded-lg text-sm hover:bg-sky-500 border border-[#FF014F] hover:border-sky-700 font-bold transition-colors"
             >
               Download Resume
             </a>
