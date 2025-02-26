@@ -83,9 +83,9 @@ const About = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/email.pdf"
+                href="/resume.pdf"
                 download
-                className="flex font-exo-2 items-center gap-2 bg-[#FF014F] text-white px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors shadow-lg w-full sm:w-auto text-center"
+                className="flex font-exo-2 items-center gap-2 bg-[#FF014F] text-white hover:bg-sky-600 px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors shadow-lg w-full sm:w-auto text-center"
               >
                 <FaDownload className="text-lg  " /> Get Resume
               </motion.a>
@@ -94,7 +94,7 @@ const About = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className="flex font-exo-2 items-center gap-2 border-2 border-[#FF014F] text-[#FF014F] px-8 py-4 rounded-lg hover:bg-[#FF014F] hover:text-white transition-colors w-full sm:w-auto text-center"
+                className="flex font-exo-2 items-center gap-2 border-2 border-[#FF014F] hover:bg-sky-600  text-[#FF014F] px-8 py-4 rounded-lg hover:border-sky-500 hover:text-white transition-colors w-full sm:w-auto text-center"
               >
                 <FaUser className="text-lg" /> Hire Me
               </motion.a>

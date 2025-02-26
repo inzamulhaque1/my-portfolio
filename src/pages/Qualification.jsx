@@ -99,18 +99,18 @@ import {
           <div className="flex justify-center space-x-8 mb-8">
             <button
               onClick={() => setActiveTab("skills")}
-              className={`py-3 px-6 font-semibold text-lg ${
-                activeTab === "skills" ? " bg-[#FF014F] text-white rounded-3xl " : ""
-              } hover:text-black transition duration-300`}
+              className={`py-3 px-6 font-semibold text-lg cursor-pointer ${
+                activeTab === "skills" ? "text-[#FF014F] border-b-4 " : ""
+              } hover:text-[#FF014F] transition duration-300`}
             >
               Skills
             </button>
             <button
               onClick={() => setActiveTab("qualifications")}
-              className={`py-3 px-6 font-semibold text-lg ${
+              className={`py-3 px-6 font-semibold text-lg  cursor-pointer ${
                 activeTab === "qualifications"
-                  ? " bg-[#FF014F] text-white rounded-3xl " : ""
-              } hover:text-black transition duration-300`}
+                  ? " text-[#FF014F] border-b-4  " : ""
+              } hover:text-[#FF014F] transition duration-300`}
             >
               Educational Qualifications
             </button>
