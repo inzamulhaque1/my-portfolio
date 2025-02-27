@@ -46,9 +46,9 @@ const Projects = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="projects" className="bg-gray-50 py-16 font-exo-2 ">
+    <div id="projects" className="bg-gray-50 py-16 ">
       <motion.h2
-        className="text-4xl font-montserrat  font-extrabold text-center text-[#FF014F] mb-4"
+        className="text-4xl font-josefin-sans font-extrabold  text-center text-[#FF014F] mb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -56,7 +56,7 @@ const Projects = () => {
         Featured Projects
       </motion.h2>
       <motion.p
-        className="text-xl text-center text-gray-600 mb-12 px-6 sm:px-12"
+        className="text-xl text-center font-exo-2 text-gray-600 mb-12 px-6 sm:px-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -64,7 +64,7 @@ const Projects = () => {
         Explore some of the innovative projects I've worked on, showcasing my skills in web development, design, and creativity.
       </motion.p>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-6">
+      <div className="grid font-exo-2 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-6">
         {projects.map((project, index) => (
           <motion.div
             key={index}
