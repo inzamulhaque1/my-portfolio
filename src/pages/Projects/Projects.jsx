@@ -64,11 +64,11 @@ const Projects = () => {
         Explore some of the innovative projects I've worked on, showcasing my skills in web development, design, and creativity.
       </motion.p>
 
-      <div className="grid font-exo-2 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-6">
+      <div className="grid font-exo-2 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-6 ">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105"
+            className="bg-white border border-[#FF014F] rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105"
             initial="initial"
             animate="visible"
             variants={cardVariants}
