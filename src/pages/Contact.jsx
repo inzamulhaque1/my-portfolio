@@ -195,7 +195,7 @@ const Contact = () => {
               <FaTwitter className="text-[#FF014F] text-3xl" />
             </a>
             <a
-              href="https://www.linkedin.com/in/inzamul1002/"
+              href="https://www.linkedin.com/in/inzamulhaque1002/"
               target="_blank"
               rel="noopener noreferrer"
             >

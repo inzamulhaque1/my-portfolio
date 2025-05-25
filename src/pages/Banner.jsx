@@ -89,7 +89,7 @@ const Banner = () => {
 
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/in/inzamul1002/"
+                href="https://www.linkedin.com/in/inzamulhaque1002/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-white text-[#FF014F] rounded-full flex items-center justify-center hover:bg-[#FF014F] hover:text-white transition-colors"
