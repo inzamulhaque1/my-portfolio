@@ -90,7 +90,7 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Mobile Navigation Controls */}
+          {/* Mobile Navigation-- Controls */}
           <div className="flex items-center md:hidden">
             <a
               href="/email.pdf"
