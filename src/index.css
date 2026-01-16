@@ -5,54 +5,404 @@
 
 @import "tailwindcss";
 
+/* ============================================
+   THEME SYSTEM - CSS Custom Properties
+   ============================================ */
+
+/* Light Theme (Default) */
+:root,
+.theme-light {
+  --color-primary: #FF014F;
+  --color-primary-dark: #e0003d;
+  --color-primary-light: #ff3370;
+  --color-secondary: #3b82f6;
+
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-bg-tertiary: #f1f5f9;
+  --color-bg-card: #ffffff;
+  --color-bg-navbar: rgba(255, 255, 255, 0.95);
+  --color-bg-footer: #0f172a;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #ffffff;
+
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  --shadow-color: rgba(15, 23, 42, 0.08);
+  --glow-color: rgba(255, 1, 79, 0.15);
+}
+
+/* Dark Theme */
+.theme-dark {
+  --color-primary: #FF014F;
+  --color-primary-dark: #ff3370;
+  --color-primary-light: #ff6b8a;
+  --color-secondary: #38bdf8;
+
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-bg-card: #1e293b;
+  --color-bg-navbar: #0f172a;
+  --color-bg-footer: #020617;
+
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #0f172a;
+
+  --color-border: #334155;
+  --color-border-light: #1e293b;
+
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-color: rgba(255, 1, 79, 0.5);
+}
+
+/* Cyberpunk Theme */
+.theme-cyberpunk {
+  --color-primary: #00f0ff;
+  --color-primary-dark: #00c4cc;
+  --color-primary-light: #7df9ff;
+  --color-secondary: #ff00ff;
+
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-tertiary: #1a1a25;
+  --color-bg-card: #15151f;
+  --color-bg-navbar: rgba(10, 10, 15, 0.95);
+  --color-bg-footer: #050508;
+
+  --color-text-primary: #e0e0ff;
+  --color-text-secondary: #a0a0cc;
+  --color-text-muted: #6060aa;
+  --color-text-inverse: #0a0a0f;
+
+  --color-border: #2a2a40;
+  --color-border-light: #1f1f30;
+
+  --shadow-color: rgba(0, 240, 255, 0.2);
+  --glow-color: rgba(0, 240, 255, 0.6);
+
+  --cyberpunk-accent: #ff00ff;
+  --cyberpunk-glow: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
+}
+
+/* Ocean Theme */
+.theme-ocean {
+  --color-primary: #06b6d4;
+  --color-primary-dark: #0891b2;
+  --color-primary-light: #22d3ee;
+  --color-secondary: #8b5cf6;
+
+  --color-bg-primary: #f0fdfa;
+  --color-bg-secondary: #ccfbf1;
+  --color-bg-tertiary: #99f6e4;
+  --color-bg-card: #ffffff;
+  --color-bg-navbar: rgba(240, 253, 250, 0.95);
+  --color-bg-footer: #134e4a;
+
+  --color-text-primary: #134e4a;
+  --color-text-secondary: #115e59;
+  --color-text-muted: #0f766e;
+  --color-text-inverse: #f0fdfa;
+
+  --color-border: #5eead4;
+  --color-border-light: #99f6e4;
+
+  --shadow-color: rgba(6, 182, 212, 0.2);
+  --glow-color: rgba(6, 182, 212, 0.4);
+}
+
+/* Sunset Theme */
+.theme-sunset {
+  --color-primary: #f97316;
+  --color-primary-dark: #ea580c;
+  --color-primary-light: #fb923c;
+  --color-secondary: #ec4899;
+
+  --color-bg-primary: #fffbeb;
+  --color-bg-secondary: #fef3c7;
+  --color-bg-tertiary: #fde68a;
+  --color-bg-card: #ffffff;
+  --color-bg-navbar: rgba(255, 251, 235, 0.95);
+  --color-bg-footer: #7c2d12;
+
+  --color-text-primary: #7c2d12;
+  --color-text-secondary: #9a3412;
+  --color-text-muted: #c2410c;
+  --color-text-inverse: #fffbeb;
+
+  --color-border: #fdba74;
+  --color-border-light: #fed7aa;
+
+  --shadow-color: rgba(249, 115, 22, 0.2);
+  --glow-color: rgba(249, 115, 22, 0.4);
+}
+
+/* Forest Theme */
+.theme-forest {
+  --color-primary: #22c55e;
+  --color-primary-dark: #16a34a;
+  --color-primary-light: #4ade80;
+  --color-secondary: #a3e635;
+
+  --color-bg-primary: #052e16;
+  --color-bg-secondary: #14532d;
+  --color-bg-tertiary: #166534;
+  --color-bg-card: #14532d;
+  --color-bg-navbar: rgba(5, 46, 22, 0.95);
+  --color-bg-footer: #022c22;
+
+  --color-text-primary: #dcfce7;
+  --color-text-secondary: #86efac;
+  --color-text-muted: #4ade80;
+  --color-text-inverse: #052e16;
+
+  --color-border: #166534;
+  --color-border-light: #14532d;
+
+  --shadow-color: rgba(34, 197, 94, 0.3);
+  --glow-color: rgba(34, 197, 94, 0.5);
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Focus Outline */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Placeholder Styling */
+::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+/* Input/Textarea Styling */
+input,
+textarea {
+  caret-color: var(--color-primary);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-text-primary);
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-tertiary) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ============================================
+   FONT FAMILIES
+   ============================================ */
 
 .font-playfair {
-    font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .font-montserrat {
-    font-family: "Montserrat", serif;
+  font-family: "Montserrat", serif;
 }
 
 .font-exo-2 {
-    font-family: "Exo 2", serif;
+  font-family: "Exo 2", serif;
 }
 
 .font-josefin-sans {
-    font-family: "Josefin Sans", serif;
-  }
+  font-family: "Josefin Sans", serif;
+}
 
+/* ============================================
+   THEME UTILITY CLASSES
+   ============================================ */
 
-  /* Scrollbar */
+.theme-bg-primary {
+  background-color: var(--color-bg-primary);
+}
+
+.theme-bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.theme-bg-card {
+  background-color: var(--color-bg-card);
+}
+
+.theme-bg-navbar {
+  background-color: var(--color-bg-navbar);
+}
+
+.theme-text {
+  color: var(--color-text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.theme-text-muted {
+  color: var(--color-text-muted);
+}
+
+.theme-border {
+  border-color: var(--color-border);
+}
+
+.theme-primary {
+  color: var(--color-primary);
+}
+
+.theme-primary-bg {
+  background-color: var(--color-primary);
+}
+
+/* Dropdown specific styles */
+.theme-dropdown-bg {
+  background-color: var(--color-bg-card);
+}
+
+.theme-dropdown-border {
+  border-color: var(--color-border);
+}
+
+/* ============================================
+   CYBERPUNK SPECIAL EFFECTS
+   ============================================ */
+
+.theme-cyberpunk .cyberpunk-glow {
+  box-shadow: var(--cyberpunk-glow);
+}
+
+.theme-cyberpunk .cyberpunk-border {
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary), inset 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.theme-cyberpunk .cyberpunk-text {
+  text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+}
+
+/* Glitch effect for cyberpunk */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.theme-cyberpunk .glitch-hover:hover {
+  animation: glitch 0.3s ease infinite;
+}
+
+/* ============================================
+   SCROLLBAR STYLES
+   ============================================ */
+
 ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px; /* For horizontal scrollbar */
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
+  border: 2px solid var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Cyberpunk scrollbar */
+.theme-cyberpunk::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary), var(--cyberpunk-accent));
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+/* Mobile scrollbar */
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
   }
-  
-  /* Scrollbar Track */
-  ::-webkit-scrollbar-track {
-    background: linear-gradient(to bottom, #ffe4e4, #ec9a9a); /* Green gradient for the track */
-    border-radius: 0px;
-  }
-  
-  /* Scrollbar Handle (Thumb) */
+
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #750202, #cc2084,#dd1c02,#f3e7e7,#136bf0,#13f094, #bd0c0c, #f3e7e7,#750202, #cc2084,#dd1c02,#f3e7e7,#136bf0,#13f094, #bd0c0c, #f3e7e7); /* Green gradient for thumb */
-    border-radius: 10px;
-    box-shadow: 0 0 6px rgba(187, 102, 102, 0.8); /* Glowing effect */
-    animation: glow 1.5s infinite alternate; /* Glow animation */
+    border: none;
   }
-  
-  /* Scrollbar Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #a07043, #f13a22); /* Lighter green thumb color on hover */
-    box-shadow: 0 0 12px rgba(192, 49, 24, 0.8), 0 0 24px rgba(179, 45, 4, 0.6); /* Stronger glowing effect */
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  
-  /* Customize scrollbar for mobile devices */
-  @media (max-width: 767px) {
-    ::-webkit-scrollbar {
-      width: 5px; /* Adjust width for mobile */
-      height: 5px; /* Adjust height for horizontal scrollbar on mobile */
-    }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
+}
+
+/* ============================================
+   THEME TRANSITION
+   ============================================ */
+
+.theme-transition {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* ============================================
+   LIGHT MODE CARD ENHANCEMENTS
+   ============================================ */
+
+.theme-light .theme-card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05),
+              0 10px 20px rgba(0, 0, 0, 0.04);
+}
+
+.theme-light .theme-card-shadow:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08),
+              0 20px 40px rgba(0, 0, 0, 0.08);
+}

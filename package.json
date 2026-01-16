@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,18 +14,13 @@
     "@tailwindcss/vite": "^4.0.3",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.5.0",
-    "localforage": "^1.10.0",
     "lucide-react": "^0.474.0",
-    "match-sorter": "^8.0.0",
-    "motion": "^12.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
     "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^7.1.5",
-    "react-router-hash-link": "^2.4.3",
-    "react-vertical-timeline-component": "^3.5.3",
-    "sort-by": "^1.2.0"
+    "react-vertical-timeline-component": "^3.5.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

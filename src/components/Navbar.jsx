@@ -1,56 +1,97 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import logo from "../assets/images/logo/logo-inz-wm.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import ThemeSwitcher from "./ThemeSwitcher";
+
+// Debounce utility function
+const debounce = (func, wait) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("#home"); // Track active link
+  const [activeLink, setActiveLink] = useState("#home");
+  const [scrolled, setScrolled] = useState(false);
+  const sectionsRef = useRef(new Map());
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
 
-  const links = [
+  const links = useMemo(() => [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
-    { href: "#qualification", label: "Qualification" },
+    { href: "#services", label: "Services" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
-  ];
+  ], []);
 
-  // Scroll event listener
+  // Cache section elements on mount
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-
-      // Update active link based on scroll position
-      links.forEach((link) => {
-        const section = document.querySelector(link.href);
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-
-          if (
-            scrollPosition >= sectionTop - 100 &&
-            scrollPosition < sectionTop + sectionHeight - 100
-          ) {
-            setActiveLink(link.href);
-          }
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup the event listener on unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    links.forEach((link) => {
+      const section = document.querySelector(link.href);
+      if (section) {
+        sectionsRef.current.set(link.href, section);
+      }
+    });
   }, [links]);
 
+  // Handle hash navigation when coming from another page
+  useEffect(() => {
+    if (isHomePage && location.hash) {
+      const section = document.querySelector(location.hash);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location, isHomePage]);
+
+  // Optimized scroll handler with debouncing
+  const handleScroll = useCallback(() => {
+    const scrollPosition = window.scrollY;
+    setScrolled(scrollPosition > 20);
+
+    sectionsRef.current.forEach((section, href) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        scrollPosition >= sectionTop - 100 &&
+        scrollPosition < sectionTop + sectionHeight - 100
+      ) {
+        setActiveLink(href);
+      }
+    });
+  }, []);
+
+  // Scroll event listener with debouncing
+  useEffect(() => {
+    const debouncedScroll = debounce(handleScroll, 10);
+    handleScroll();
+    window.addEventListener("scroll", debouncedScroll, { passive: true });
+    return () => window.removeEventListener("scroll", debouncedScroll);
+  }, [handleScroll]);
+
   return (
-    <nav className="bg-white shadow-md w-full fixed top-0 z-50">
+    <nav
+      className={`
+        fixed top-0 w-full z-50 theme-transition backdrop-blur-md
+        ${scrolled ? 'shadow-lg' : ''}
+      `}
+      style={{
+        backgroundColor: 'var(--color-bg-navbar)',
+        borderBottom: scrolled ? '1px solid var(--color-border)' : 'none'
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Single instance for all screen sizes */}
-          <Link to={"/"}>
+          {/* Logo */}
+          <Link to={"/"} className="flex-shrink-0">
             <img src={logo} alt="Logo" className="h-8 md:h-10" />
           </Link>
 
@@ -60,18 +101,22 @@ const Navbar = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-semibold transition-colors duration-200 hover:text-sky-500 hover:underline hover:underline-offset-8 
-    ${
-      activeLink === link.href
-        ? "text-[#FF014F] underline underline-offset-8"
-        : "text-black"
-    }`} // Apply active style
+                className={`
+                  font-semibold transition-all duration-200
+                  hover:text-[var(--color-primary)] hover:underline hover:underline-offset-8
+                  ${activeLink === link.href
+                    ? "text-[var(--color-primary)] underline underline-offset-8"
+                    : "theme-text"
+                  }
+                `}
                 onClick={(e) => {
-                  e.preventDefault(); // Prevent default anchor link behavior
-                  setActiveLink(link.href); // Set active link
-                  document
-                    .querySelector(link.href)
-                    ?.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the section
+                  e.preventDefault();
+                  setActiveLink(link.href);
+                  if (isHomePage) {
+                    document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    navigate("/" + link.href);
+                  }
                 }}
               >
                 {link.label}
@@ -79,45 +124,55 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop Download Button */}
-          <div className="hidden md:block ">
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeSwitcher />
             <a
               href="/resume.pdf"
               download
-              className="bg-[#FF014F] text-white px-4 py-2 rounded-lg text-sm hover:bg-sky-500 border border-[#FF014F] hover:border-sky-700 font-bold transition-colors"
+              className="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 text-white hover:opacity-90"
+              style={{ backgroundColor: 'var(--color-primary)' }}
+              aria-label="Download Resume PDF"
             >
               Download Resume
             </a>
           </div>
 
-          {/* Mobile Navigation-- Controls */}
-          <div className="flex items-center md:hidden">
+          {/* Mobile Navigation Controls */}
+          <div className="flex items-center md:hidden gap-2">
+            <ThemeSwitcher />
             <a
-              href="/email.pdf"
+              href="/resume.pdf"
               download
-              className="bg-[#FF014F] text-white px-3 py-1.5 rounded-lg text-sm mr-4 hover:bg-opacity-90 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-sm text-white hover:opacity-90 transition-colors"
+              style={{ backgroundColor: 'var(--color-primary)' }}
+              aria-label="Download Resume PDF"
             >
-              Download Resume
+              Resume
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="focus:outline-none p-2 rounded-lg hover:bg-gray-100"
+              className="focus:outline-none p-2 rounded-lg theme-transition"
+              style={{ backgroundColor: isOpen ? 'var(--color-bg-tertiary)' : 'transparent' }}
               aria-label="Toggle menu"
             >
               <div
-                className={`w-6 h-0.5 bg-gray-800 transition-all duration-200 ${
+                className={`w-6 h-0.5 theme-transition ${
                   isOpen ? "transform rotate-45 translate-y-1.5" : "mb-1.5"
                 }`}
+                style={{ backgroundColor: 'var(--color-text-primary)' }}
               />
               <div
-                className={`w-6 h-0.5 bg-gray-800 transition-all duration-200 ${
+                className={`w-6 h-0.5 theme-transition ${
                   isOpen ? "opacity-0" : "mb-1.5"
                 }`}
+                style={{ backgroundColor: 'var(--color-text-primary)' }}
               />
               <div
-                className={`w-6 h-0.5 bg-gray-800 transition-all duration-200 ${
+                className={`w-6 h-0.5 theme-transition ${
                   isOpen ? "transform -rotate-45 -translate-y-1.5" : ""
                 }`}
+                style={{ backgroundColor: 'var(--color-text-primary)' }}
               />
             </button>
           </div>
@@ -136,13 +191,23 @@ const Navbar = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-semibold text-center transition-colors duration-200 hover:underline hover:underline-offset-8 
-                  ${
-                    activeLink === link.href ? "text-[#FF014F]" : "text-black"
-                  }`} // Apply active style
-                onClick={() => {
+                className={`
+                  font-semibold text-center transition-colors duration-200
+                  hover:underline hover:underline-offset-8
+                  ${activeLink === link.href
+                    ? "text-[var(--color-primary)]"
+                    : "theme-text"
+                  }
+                `}
+                onClick={(e) => {
+                  e.preventDefault();
                   setActiveLink(link.href);
-                  setIsOpen(false); // Close the menu after clicking
+                  setIsOpen(false);
+                  if (isHomePage) {
+                    document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    navigate("/" + link.href);
+                  }
                 }}
               >
                 {link.label}

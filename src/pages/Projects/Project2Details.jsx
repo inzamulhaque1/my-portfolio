@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import skillTreeHero from "../../assets/images/projects/skillttree1.png";
-import { FaReact, FaNodeJs, FaGithub, FaLink, FaArrowLeft } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaGithub, FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
 import { SiTailwindcss, SiExpress } from "react-icons/si";
 import { DiMongodb } from "react-icons/di";
 import screenshot1 from "../../assets/images/projects/skillttree1.png";
@@ -11,159 +11,163 @@ import screenshot5 from "../../assets/images/projects/skillttree5.png";
 import screenshot6 from "../../assets/images/projects/skillttree6.png";
 import { Link } from "react-router-dom";
 
-const techIcons = [
-  { name: "React", icon: <FaReact className="text-blue-500 text-2xl" /> },
-  { name: "Node.js", icon: <FaNodeJs className="text-green-500 text-2xl" /> },
-  { name: "MongoDB", icon: <DiMongodb className="text-green-700 text-2xl" /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400 text-2xl" /> },
-  { name: "Express", icon: <SiExpress className="text-gray-600 text-2xl" /> },
+const techStack = [
+  { name: "React", icon: <FaReact className="text-2xl text-blue-500" /> },
+  { name: "Node.js", icon: <FaNodeJs className="text-2xl text-green-500" /> },
+  { name: "MongoDB", icon: <DiMongodb className="text-2xl text-green-700" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-2xl text-teal-400" /> },
+  { name: "Express", icon: <SiExpress className="text-2xl" /> },
 ];
 
 const screenshots = [
-  { url: screenshot1, alt: "SkillTree Screenshot 1" },
-  { url: screenshot2, alt: "SkillTree Screenshot 2" },
-  { url: screenshot3, alt: "SkillTree Screenshot 3" },
-  { url: screenshot4, alt: "SkillTree Screenshot 4" },
-  { url: screenshot5, alt: "SkillTree Screenshot 5" },
-  { url: screenshot6, alt: "SkillTree Screenshot 6" },
+  { url: screenshot1, alt: "SkillTree Home" },
+  { url: screenshot2, alt: "Learning Path" },
+  { url: screenshot3, alt: "Progress" },
+  { url: screenshot4, alt: "Courses" },
+  { url: screenshot5, alt: "Dashboard" },
+  { url: screenshot6, alt: "Profile" },
+];
+
+const features = [
+  "Connect with expert tutors for language learning",
+  "Add and manage tutorials with ease",
+  "Track your learning sessions and appointments",
+  "Choose from multiple language categories",
+  "Flexible and affordable subscription plans",
+  "Interactive tools like quizzes and language games",
 ];
 
 const Project2Details = () => {
   return (
-    <div id="project2-details" className="mt-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto font-exo-2 ">
-      <Link to={'/'}>
-        <button className="btn py-2 px-4 bg-[#FF014F] cursor-pointer rounded-2xl text-white font-bold my-3 flex justify-center items-center gap-2 fixed z-10">
-          <FaArrowLeft /> BACK
-        </button>
-      </Link>
-
-      {/* Hero Section */}
-      <motion.div
-        className="relative"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <img
-          src={skillTreeHero}
-          alt="SkillTree Hero"
-          className="w-full rounded-2xl shadow-lg mb-8"
-        />
-      </motion.div>
-
-      {/* Live Demo Section */}
-      <div className="mb-8 text-center">
-        <h3 className="text-2xl font-semibold mb-4 text-[#FF014F]">Live Demo</h3>
-        <div className="flex justify-center gap-4 mb-6 flex-wrap">
-          <a
-            href="https://skilltree-e5057.web.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline flex justify-center items-center gap-2 hover:text-blue-400"
+    <div
+      className="min-h-screen py-8 theme-transition"
+      style={{ backgroundColor: 'var(--color-bg-primary)' }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Back Button */}
+        <Link to="/">
+          <motion.button
+            whileHover={{ x: -5 }}
+            className="flex items-center gap-2 mb-8 font-medium cursor-pointer transition-colors"
+            style={{ color: 'var(--color-primary)' }}
           >
-            <FaLink /> Primary Live Site
-          </a>
-          <a
-            href="https://skilltree-e5057.firebaseapp.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline flex justify-center items-center gap-2 hover:text-blue-400"
-          >
-            <FaLink /> Alternative Live Site
-          </a>
-          <div>
-            <a
-              href="https://github.com/inzamulhaque1/skilltree-client"
-              target="_blank"
-              rel="noopener noreferrer"
+            <FaArrowLeft /> Back to Home
+          </motion.button>
+        </Link>
+
+        {/* Hero Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-2xl overflow-hidden shadow-2xl mb-10"
+        >
+          <img src={skillTreeHero} alt="SkillTree" className="w-full" />
+        </motion.div>
+
+        {/* Project Info */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          {/* Main Content */}
+          <div className="lg:col-span-2">
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-4xl md:text-5xl font-bold mb-4 theme-text"
             >
-              <FaGithub className="text-3xl hover:text-blue-600" />
-            </a>
+              SkillTree
+            </motion.h1>
+            <p className="text-lg leading-relaxed mb-6 theme-text-secondary">
+              SkillTree is your gateway to learning multiple languages and gaining new skills.
+              It connects learners with expert tutors and provides interactive learning tools to
+              help you reach your full potential.
+            </p>
+
+            {/* Features */}
+            <h2 className="text-2xl font-bold mb-4 theme-text">Features</h2>
+            <ul className="space-y-3 mb-8">
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-start gap-3 theme-text-secondary">
+                  <span style={{ color: 'var(--color-primary)' }}>✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Links */}
+            <div
+              className="p-6 rounded-2xl"
+              style={{ backgroundColor: 'var(--color-bg-secondary)' }}
+            >
+              <h3 className="font-bold mb-4 theme-text">Project Links</h3>
+              <div className="space-y-3">
+                <a
+                  href="https://skilltree-e5057.web.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-white font-medium cursor-pointer transition-opacity hover:opacity-90"
+                  style={{ backgroundColor: 'var(--color-primary)' }}
+                >
+                  <FaExternalLinkAlt /> Live Demo
+                </a>
+                <a
+                  href="https://github.com/inzamulhaque1/skilltree-client"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg font-medium cursor-pointer transition-colors border"
+                  style={{
+                    borderColor: 'var(--color-border)',
+                    color: 'var(--color-text-primary)'
+                  }}
+                >
+                  <FaGithub /> View Code
+                </a>
+              </div>
+            </div>
+
+            {/* Tech Stack */}
+            <div
+              className="p-6 rounded-2xl"
+              style={{ backgroundColor: 'var(--color-bg-secondary)' }}
+            >
+              <h3 className="font-bold mb-4 theme-text">Tech Stack</h3>
+              <div className="flex flex-wrap gap-3">
+                {techStack.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg"
+                    style={{ backgroundColor: 'var(--color-bg-tertiary)' }}
+                  >
+                    {tech.icon}
+                    <span className="text-sm theme-text-secondary">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Project Overview */}
-      <motion.h2
-        className="text-3xl font-bold text-[#FF014F] mb-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        SkillTree
-      </motion.h2>
-      <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-        SkillTree is your gateway to learning multiple languages and gaining new skills. 
-        It connects learners with expert tutors and provides interactive learning tools to 
-        help you reach your full potential.
-      </p>
-
-      {/* Tech Stack */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold mb-4 text-[#FF014F]">Tech Stack</h3>
-        <div className="flex gap-4 flex-wrap justify-center">
-          {techIcons.map((tech, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col items-center justify-center"
-              whileHover={{ scale: 1.2 }}
-            >
-              {tech.icon}
-              <span className="text-sm text-gray-600 mt-1">{tech.name}</span>
-            </motion.div>
-          ))}
+        {/* Screenshots */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 theme-text">Screenshots</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {screenshots.map((screenshot, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.02 }}
+                className="rounded-xl overflow-hidden shadow-lg cursor-pointer"
+              >
+                <img
+                  src={screenshot.url}
+                  alt={screenshot.alt}
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Features */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold mb-4 text-[#FF014F]">Features</h3>
-        <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>👨‍🏫 Connect with expert tutors for language learning</li>
-          <li>📝 Add and manage tutorials with ease</li>
-          <li>📚 Track your learning sessions and appointments</li>
-          <li>🌍 Choose from multiple language categories</li>
-          <li>💰 Flexible and affordable subscription plans</li>
-          <li>🎮 Interactive tools like quizzes and language games</li>
-        </ul>
-      </div>
-
-      {/* Screenshots Section */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold mb-4 text-[#FF014F]">Screenshots</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {screenshots.map((screenshot, index) => (
-            <img
-              key={index}
-              src={screenshot.url}
-              alt={screenshot.alt}
-              className="w-full border-2 border-[#FF014F] rounded-lg shadow hover:scale-105 transition-transform"
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Installation Instructions */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold mb-4 text-[#FF014F]">Getting Started</h3>
-        <p className="text-gray-700 mb-4">
-          Follow these steps to run the SkillTree project locally:
-        </p>
-        <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
-          <code className="whitespace-pre-line">
-            {`# Clone the repository
-git clone https://github.com/inzamulhaque1/skilltree-client.git
-
-# Navigate to the project directory
-cd SkillTree
-
-# Install frontend dependencies
-npm install
-
-# Start the client
-npm run dev`}
-          </code>
-        </pre>
       </div>
     </div>
   );

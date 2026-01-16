@@ -1,32 +1,48 @@
 import { createBrowserRouter } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import MainLayout from "../layout/MainLayout";
-import Home from "../pages/Home/Home";
-import Project1Details from "../pages/Projects/project1Details";
-import Project2Details from "../pages/Projects/Project2Details";
-import Project3Details from "../pages/Projects/Project3Details";
+import Loading from "../components/Loading";
 
+// Lazy load pages for better performance
+const Home = lazy(() => import("../pages/Home/Home"));
+const Project1Details = lazy(() => import("../pages/Projects/Project1Details"));
+const Project2Details = lazy(() => import("../pages/Projects/Project2Details"));
+const Project3Details = lazy(() => import("../pages/Projects/Project3Details"));
+const NotFound = lazy(() => import("../pages/NotFound"));
+
+// Wrapper component for lazy loaded routes
+const LazyComponent = ({ children }) => (
+  <Suspense fallback={<Loading />}>
+    {children}
+  </Suspense>
+);
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: <MainLayout />,
+    errorElement: <LazyComponent><NotFound /></LazyComponent>,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <LazyComponent><Home /></LazyComponent>,
+      },
+      {
+        path: "/project1-details",
+        element: <LazyComponent><Project1Details /></LazyComponent>,
+      },
+      {
+        path: "/project2-details",
+        element: <LazyComponent><Project2Details /></LazyComponent>,
+      },
+      {
+        path: "/project3-details",
+        element: <LazyComponent><Project3Details /></LazyComponent>,
       },
     ],
   },
   {
-    path: "/project1-details",
-    element: <Project1Details></Project1Details>,
-  },
-  {
-    path: "/project2-details",
-    element: <Project2Details></Project2Details>,
-  },
-  {
-    path: "/project3-details",
-    element: <Project3Details></Project3Details>,
+    path: "*",
+    element: <LazyComponent><NotFound /></LazyComponent>,
   },
 ]);

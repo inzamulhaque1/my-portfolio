@@ -1,17 +1,19 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-
+import BackToTop from "../components/BackToTop";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 const MainLayout = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
-          
-            
+        <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-grow">
+                <Outlet />
+            </main>
+            <Footer />
+            <BackToTop />
+            <WhatsAppButton />
         </div>
     );
 };

@@ -2,15 +2,25 @@
 import { motion } from 'framer-motion';
 import { FaDownload, FaUser } from 'react-icons/fa';
 import myimg from '../assets/images/about/myimg2.jpeg';
+import GitHubStats from '../components/GitHubStats';
 
 const About = () => {
-
   return (
-    <section id="about" className="py-16 md:py-20 bg-gray-50 overflow-hidden">
+    <section
+      id="about"
+      className="py-16 md:py-20 overflow-hidden relative theme-transition"
+      style={{ backgroundColor: 'var(--color-bg-secondary)' }}
+    >
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
-        <div className="absolute -right-20 top-20 w-72 h-72 bg-[#FF014F] rounded-full blur-3xl" />
-        <div className="absolute -left-20 bottom-20 w-72 h-72 bg-blue-500 rounded-full blur-3xl" />
+        <div
+          className="absolute -right-20 top-20 w-72 h-72 rounded-full blur-3xl"
+          style={{ backgroundColor: 'var(--color-primary)' }}
+        />
+        <div
+          className="absolute -left-20 bottom-20 w-72 h-72 rounded-full blur-3xl"
+          style={{ backgroundColor: 'var(--color-secondary)' }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative">
@@ -21,13 +31,19 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-[#FF014F] text-sm font-bold tracking-wider uppercase font-josefin-sans mb-2 block">
+          <span
+            className="text-sm font-bold tracking-wider uppercase font-josefin-sans mb-2 block"
+            style={{ color: 'var(--color-primary)' }}
+          >
             About Me
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  font-exo-2 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-exo-2 mb-4 theme-text">
             Know Me More
           </h2>
-          <div className="w-20 h-1 bg-[#FF014F] mx-auto rounded-full" />
+          <div
+            className="w-20 h-1 mx-auto rounded-full"
+            style={{ backgroundColor: 'var(--color-primary)' }}
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -49,9 +65,14 @@ const About = () => {
                   className="w-full rounded-2xl shadow-xl"
                 />
               </motion.div>
-              {/* Decorative elements */}
-              <div className="absolute -inset-4 bg-[#FF014F] opacity-20 blur-xl rounded-full" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500 opacity-20 blur-xl rounded-full" />
+              <div
+                className="absolute -inset-4 opacity-20 blur-xl rounded-full"
+                style={{ backgroundColor: 'var(--color-primary)' }}
+              />
+              <div
+                className="absolute top-0 right-0 w-32 h-32 opacity-20 blur-xl rounded-full"
+                style={{ backgroundColor: 'var(--color-secondary)' }}
+              />
             </div>
           </motion.div>
 
@@ -63,12 +84,17 @@ const About = () => {
             className="md:col-span-7 space-y-6"
           >
             <div className="space-y-4">
-              <h3 className="text-2xl md:text-3xl font-bold">
-                Hi, I'm <span className="text-[#FF014F] font-josefin-sans">Md. Inzamul Haque Joy</span>
+              <h3 className="text-2xl md:text-3xl font-bold theme-text">
+                Hi, I'm{' '}
+                <span className="font-josefin-sans" style={{ color: 'var(--color-primary)' }}>
+                  Md. Inzamul Haque Joy
+                </span>
               </h3>
-              <p className="text-xl text-gray-600 font-montserrat ">MERN Stack Developer</p>
+              <p className="text-xl font-montserrat theme-text-secondary">
+                MERN Stack Developer
+              </p>
 
-              <div className="prose prose-lg font-exo-2 text-gray-600">
+              <div className="prose prose-lg font-exo-2 theme-text-secondary space-y-4">
                 <p>
                   My journey in web development began with a curiosity about how computers work and how websites are built. From an early age, I was drawn to programming, learning HTML and CSS to design simple static websites. Over time, my skills evolved, and I immersed myself in JavaScript, diving deep into frontend technologies and later exploring full-stack development with the MERN stack.
                 </p>
@@ -85,22 +111,32 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
                 href="/resume.pdf"
                 download
-                className="flex font-exo-2 items-center gap-2 bg-[#FF014F] text-white hover:bg-sky-600 px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors shadow-lg w-full sm:w-auto text-center"
+                className="flex font-exo-2 items-center gap-2 px-8 py-4 rounded-lg transition-colors shadow-lg w-full sm:w-auto justify-center text-white"
+                style={{ backgroundColor: 'var(--color-primary)' }}
+                aria-label="Download Resume PDF"
               >
-                <FaDownload className="text-lg  " /> Get Resume
+                <FaDownload className="text-lg" /> Get Resume
               </motion.a>
 
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className="flex font-exo-2 items-center gap-2 border-2 border-[#FF014F] hover:bg-sky-600  text-[#FF014F] px-8 py-4 rounded-lg hover:border-sky-500 hover:text-white transition-colors w-full sm:w-auto text-center"
+                className="flex font-exo-2 items-center gap-2 border-2 px-8 py-4 rounded-lg transition-colors w-full sm:w-auto justify-center"
+                style={{
+                  borderColor: 'var(--color-primary)',
+                  color: 'var(--color-primary)'
+                }}
+                aria-label="Go to contact section"
               >
                 <FaUser className="text-lg" /> Hire Me
               </motion.a>
             </div>
           </motion.div>
         </div>
+
+        {/* GitHub Stats */}
+        <GitHubStats username="inzamulhaque1" />
       </div>
     </section>
   );
