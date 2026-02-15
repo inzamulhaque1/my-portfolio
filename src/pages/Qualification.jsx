@@ -8,6 +8,12 @@ import {
   FaJsSquare,
   FaCcStripe,
 } from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiThreedotjs,
+  SiSocketdotio,
+} from "react-icons/si";
 import { TiHtml5 } from "react-icons/ti";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { motion } from "framer-motion";
@@ -36,14 +42,24 @@ const Qualification = () => {
       color: "#F7DF1E",
     },
     {
-      name: "Tailwind CSS",
-      icon: <RiTailwindCssFill className="text-white" />,
-      color: "#38BDF8",
+      name: "TypeScript",
+      icon: <SiTypescript className="text-white" />,
+      color: "#3178C6",
     },
     {
       name: "React",
       icon: <FaReact className="text-white" />,
       color: "#61DAFB",
+    },
+    {
+      name: "Next.js",
+      icon: <SiNextdotjs className="text-white" />,
+      color: "#000000",
+    },
+    {
+      name: "Tailwind CSS",
+      icon: <RiTailwindCssFill className="text-white" />,
+      color: "#38BDF8",
     },
     {
       name: "Node JS",
@@ -61,9 +77,9 @@ const Qualification = () => {
       color: "#FFCA28",
     },
     {
-      name: "Bootstrap",
-      icon: <FaBootstrap className="text-white" />,
-      color: "#563D7C",
+      name: "Socket.IO",
+      icon: <SiSocketdotio className="text-white" />,
+      color: "#010101",
     },
     {
       name: "Stripe",
@@ -90,6 +106,11 @@ const Qualification = () => {
     },
   ];
 
+  const tabs = [
+    { id: "skills", label: "Skills" },
+    { id: "qualifications", label: "Education" },
+  ];
+
   return (
     <div
       id="qualification"
@@ -114,7 +135,7 @@ const Qualification = () => {
             className="text-sm font-bold tracking-wider uppercase font-josefin-sans mb-2 block"
             style={{ color: 'var(--color-primary)' }}
           >
-            My Expertise
+            My Journey
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-exo-2 mb-4 theme-text">
             Skills & Education
@@ -126,25 +147,19 @@ const Qualification = () => {
         </motion.div>
 
         {/* Tab Navigation */}
-        <div className="flex justify-center space-x-8 mb-8">
-          <button
-            onClick={() => setActiveTab("skills")}
-            className={`py-3 px-6 font-semibold text-lg cursor-pointer transition duration-300 border-b-4 ${
-              activeTab === "skills" ? "border-[var(--color-primary)]" : "border-transparent"
-            }`}
-            style={{ color: activeTab === "skills" ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
-          >
-            Skills
-          </button>
-          <button
-            onClick={() => setActiveTab("qualifications")}
-            className={`py-3 px-6 font-semibold text-lg cursor-pointer transition duration-300 border-b-4 ${
-              activeTab === "qualifications" ? "border-[var(--color-primary)]" : "border-transparent"
-            }`}
-            style={{ color: activeTab === "qualifications" ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
-          >
-            Educational Qualifications
-          </button>
+        <div className="flex justify-center space-x-4 sm:space-x-8 mb-8">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`py-3 px-4 sm:px-6 font-semibold text-base sm:text-lg cursor-pointer transition duration-300 border-b-4 ${
+                activeTab === tab.id ? "border-[var(--color-primary)]" : "border-transparent"
+              }`}
+              style={{ color: activeTab === tab.id ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {/* Skills Tab */}
@@ -152,9 +167,9 @@ const Qualification = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.2 }}
           >
-            <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
               {skills.map((skill) => (
                 <motion.div
                   key={skill.name}
@@ -179,7 +194,7 @@ const Qualification = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.2 }}
             className="qualification-timeline"
           >
             <VerticalTimeline lineColor="var(--color-primary)">

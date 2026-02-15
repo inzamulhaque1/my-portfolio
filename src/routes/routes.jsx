@@ -5,9 +5,7 @@ import Loading from "../components/Loading";
 
 // Lazy load pages for better performance
 const Home = lazy(() => import("../pages/Home/Home"));
-const Project1Details = lazy(() => import("../pages/Projects/Project1Details"));
-const Project2Details = lazy(() => import("../pages/Projects/Project2Details"));
-const Project3Details = lazy(() => import("../pages/Projects/Project3Details"));
+const ProjectDetails = lazy(() => import("../pages/Projects/ProjectDetails"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 
 // Wrapper component for lazy loaded routes
@@ -28,16 +26,21 @@ export const router = createBrowserRouter([
         element: <LazyComponent><Home /></LazyComponent>,
       },
       {
+        path: "/project/:projectId",
+        element: <LazyComponent><ProjectDetails /></LazyComponent>,
+      },
+      // Legacy routes redirect to new dynamic routes
+      {
         path: "/project1-details",
-        element: <LazyComponent><Project1Details /></LazyComponent>,
+        element: <LazyComponent><Home /></LazyComponent>,
       },
       {
         path: "/project2-details",
-        element: <LazyComponent><Project2Details /></LazyComponent>,
+        element: <LazyComponent><Home /></LazyComponent>,
       },
       {
         path: "/project3-details",
-        element: <LazyComponent><Project3Details /></LazyComponent>,
+        element: <LazyComponent><Home /></LazyComponent>,
       },
     ],
   },

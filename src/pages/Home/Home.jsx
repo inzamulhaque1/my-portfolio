@@ -1,6 +1,7 @@
 import About from "../About";
 import Banner from "../Banner";
 import Contact from "../Contact";
+import Experience from "../Experience";
 import Projects from "../Projects/Projects";
 import Qualification from "../Qualification";
 import Services from "../Services";
@@ -11,6 +12,7 @@ const Home = () => {
         <div>
             <Banner />
             <About />
+            <Experience />
             <Services />
             <Qualification />
             <Projects />
