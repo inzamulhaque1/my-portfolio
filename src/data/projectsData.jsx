@@ -255,6 +255,36 @@ const projects = [
 
   // --- REMAINING WITH LIVE LINKS ---
   {
+    id: "thinkcodify",
+    title: "Think Codify",
+    subtitle: "Tech Company Website",
+    description: "A modern, multi-page tech company website built with React 19 and Vite 7. Features 7 professionally designed pages including Home, About, Blog, Career, Products, Services, and Contact with EmailJS integration, Framer Motion animations, and SweetAlert2 notifications.",
+    shortDescription: "Multi-page tech company website with blog, career portal, products showcase, and contact system.",
+    image: "https://github.com/inzamulhaque1/Think_Codify/raw/main/src/assets/images/banner/hero1.jpg",
+    tech: ["React 19", "Tailwind CSS", "Framer Motion", "React Router"],
+    category: "Full Stack",
+    type: "personal",
+    company: null,
+    featured: false,
+    liveUrl: "https://www.thinkcodify.com",
+    githubUrl: "https://github.com/inzamulhaque1/Think_Codify",
+    features: [
+      "7 professionally designed pages (Home, About, Blog, Career, Products, Services, Contact)",
+      "Responsive design with Tailwind CSS 4",
+      "Framer Motion page transitions and animations",
+      "EmailJS powered contact form",
+      "SweetAlert2 interactive notifications",
+      "Blog section for content publishing",
+      "Career portal with job listings",
+      "Products and services showcase",
+    ],
+    screenshots: [
+      { url: "https://github.com/inzamulhaque1/Think_Codify/raw/main/src/assets/images/banner/hero1.jpg", alt: "Home Hero" },
+      { url: "https://github.com/inzamulhaque1/Think_Codify/raw/main/src/assets/images/banner/hero2.jpg", alt: "About Section" },
+      { url: "https://github.com/inzamulhaque1/Think_Codify/raw/main/src/assets/images/banner/hero3.jpg", alt: "Services Section" },
+    ],
+  },
+  {
     id: "dreamkeys",
     title: "DreamKeys",
     subtitle: "Goal & Dream Tracking Platform",
