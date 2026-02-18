@@ -1,8 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
-import { FaDownload, FaUser } from 'react-icons/fa';
+import { FaDownload, FaUser, FaBuilding, FaBriefcase, FaProjectDiagram } from 'react-icons/fa';
 import myimg from '../assets/images/about/myimg2.jpeg';
 import GitHubStats from '../components/GitHubStats';
+
+const highlights = [
+  { icon: <FaBuilding />, value: "2", label: "Companies" },
+  { icon: <FaBriefcase />, value: "14+", label: "Projects" },
+  { icon: <FaProjectDiagram />, value: "15+", label: "Technologies" },
+];
 
 const About = () => {
   return (
@@ -69,10 +75,26 @@ const About = () => {
                 className="absolute -inset-4 opacity-20 blur-xl rounded-full"
                 style={{ backgroundColor: 'var(--color-primary)' }}
               />
-              <div
-                className="absolute top-0 right-0 w-32 h-32 opacity-20 blur-xl rounded-full"
-                style={{ backgroundColor: 'var(--color-secondary)' }}
-              />
+            </div>
+
+            {/* Quick Stats under photo */}
+            <div className="grid grid-cols-3 gap-3 mt-6">
+              {highlights.map((item) => (
+                <div
+                  key={item.label}
+                  className="text-center p-3 rounded-xl border theme-transition"
+                  style={{
+                    backgroundColor: 'var(--color-bg-card)',
+                    borderColor: 'var(--color-border)',
+                  }}
+                >
+                  <div className="text-lg mb-1" style={{ color: 'var(--color-primary)' }}>
+                    {item.icon}
+                  </div>
+                  <div className="text-lg font-bold font-exo-2 theme-text">{item.value}</div>
+                  <div className="text-xs theme-text-muted">{item.label}</div>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -91,16 +113,32 @@ const About = () => {
                 </span>
               </h3>
               <p className="text-xl font-montserrat theme-text-secondary">
-                MERN Stack Developer
+                Full-Stack Web Developer
               </p>
 
               <div className="prose prose-lg font-exo-2 theme-text-secondary space-y-4">
                 <p>
-                  My journey in web development began with a curiosity about how computers work and how websites are built. From an early age, I was drawn to programming, learning HTML and CSS to design simple static websites. Over time, my skills evolved, and I immersed myself in JavaScript, diving deep into frontend technologies and later exploring full-stack development with the MERN stack.
+                  I'm a professional web developer currently working as a <strong className="theme-text">Jr. Full-Stack Web Developer at ShareTasking</strong>, a US-based tech company where I build production SaaS platforms using Next.js, TypeScript, Prisma, and Redis. Previously, I worked as a <strong className="theme-text">Frontend Developer at Dizition</strong>, where I delivered 6 client-facing web applications across healthcare, education, tourism, and community sectors.
                 </p>
                 <p>
-                  Throughout my development journey, I have worked on several real-world projects, enhancing my skills in frontend development, database management, and server-side programming. With a passion for learning, I constantly strive to stay updated with the latest trends in web technologies. My goal is to contribute to impactful projects and create meaningful digital experiences.
+                  With <strong className="theme-text">14+ projects shipped</strong>, including live production websites, SaaS platforms, e-commerce stores, and school management systems — I bring real company experience and a proven track record of delivering results. I also take on freelance client projects and have built iPipasa, a live Islamic e-commerce platform.
                 </p>
+              </div>
+
+              {/* Tech highlights */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {["Next.js", "TypeScript", "React", "Prisma", "Redis", "Tailwind CSS", "Node.js", "MongoDB"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs px-3 py-1.5 rounded-full font-medium"
+                    style={{
+                      backgroundColor: 'var(--color-bg-tertiary)',
+                      color: 'var(--color-text-secondary)',
+                    }}
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
 

@@ -10,10 +10,10 @@ const Banner = () => {
   const { isDark } = useTheme();
 
   const roles = [
-    "MERN Stack Developer",
-    "Frontend Specialist",
-    "React Developer",
-    "Full Stack Developer",
+    "Full-Stack Web Developer",
+    "Next.js & React Specialist",
+    "SaaS Platform Builder",
+    "Frontend Engineer",
   ];
 
   const socialLinks = [

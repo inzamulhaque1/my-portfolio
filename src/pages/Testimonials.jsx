@@ -1,80 +1,48 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaQuoteLeft, FaChevronLeft, FaChevronRight, FaStar, FaUser } from 'react-icons/fa';
+import {
+  FaQuoteLeft,
+  FaGlobe,
+  FaBuilding,
+  FaHandshake,
+  FaArrowRight,
+} from 'react-icons/fa';
 
-const testimonials = [
+const clientWork = [
   {
-    id: 'testimonial-1',
-    name: 'John Smith',
-    role: 'CEO, TechStart',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    content: 'Inzamul delivered an exceptional web application that exceeded our expectations. His attention to detail and technical expertise made our project a success.',
-    rating: 5,
+    company: "ShareTasking",
+    role: "Jr. Full-Stack Web Developer",
+    period: "Nov 2025 - Present",
+    type: "Company",
+    color: "#3b82f6",
+    quote: "Building production SaaS platforms with Next.js, TypeScript, Prisma, and Redis for a US-based tech company.",
+    projects: ["Bruskee", "Launchier"],
   },
   {
-    id: 'testimonial-2',
-    name: 'Sarah Johnson',
-    role: 'Product Manager, InnovateCo',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
-    content: 'Working with Inzamul was a pleasure. He understood our requirements perfectly and delivered a responsive, user-friendly website on time.',
-    rating: 5,
+    company: "Dizition",
+    role: "Frontend Developer",
+    period: "2024 - Oct 2025",
+    type: "Company",
+    color: "#22c55e",
+    quote: "Delivered 6 client-facing web applications across healthcare, education, tourism, and religious sectors.",
+    projects: ["IPC Kuwait", "MAPHS CTG", "AIG Hospital", "Bangladesh Eco Tours", "CTG Dairy", "SuccessIn"],
   },
   {
-    id: 'testimonial-3',
-    name: 'Michael Chen',
-    role: 'Founder, DevSolutions',
-    image: 'https://randomuser.me/api/portraits/men/52.jpg',
-    content: 'Inzamul is a talented developer who brings creativity and professionalism to every project. I highly recommend his services.',
-    rating: 5,
+    company: "iPipasa",
+    role: "Freelance Developer",
+    period: "Client Project",
+    type: "Client",
+    color: "#f59e0b",
+    quote: "Built a full Islamic e-commerce platform with cart, order tracking, pre-orders, and blog — now live in production.",
+    projects: ["iPipasa E-Commerce"],
   },
 ];
 
-// Avatar component with fallback
-const Avatar = ({ src, name }) => {
-  const [hasError, setHasError] = useState(false);
-
-  if (hasError) {
-    return (
-      <div
-        className="w-16 h-16 rounded-full flex items-center justify-center border-4"
-        style={{
-          backgroundColor: 'var(--color-bg-tertiary)',
-          borderColor: 'var(--color-primary)',
-          opacity: 0.2
-        }}
-      >
-        <FaUser className="text-2xl" style={{ color: 'var(--color-text-secondary)' }} />
-      </div>
-    );
-  }
-
-  return (
-    <img
-      src={src}
-      alt={name}
-      className="w-16 h-16 rounded-full object-cover border-4"
-      style={{ borderColor: 'var(--color-primary)', opacity: 0.8 }}
-      onError={() => setHasError(true)}
-      loading="lazy"
-    />
-  );
-};
-
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
 
   return (
     <section
@@ -95,116 +63,104 @@ const Testimonials = () => {
             className="text-sm font-bold tracking-wider uppercase font-josefin-sans mb-2 block"
             style={{ color: 'var(--color-primary)' }}
           >
-            Testimonials
+            Trusted By
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-exo-2 mb-4 theme-text">
-            What Clients Say
+            Companies & Clients
           </h2>
           <div
             className="w-20 h-1 mx-auto rounded-full"
             style={{ backgroundColor: 'var(--color-primary)' }}
           />
+          <p className="mt-4 max-w-2xl mx-auto theme-text-secondary">
+            Real companies I've worked with, real projects I've shipped, and real clients I've served.
+          </p>
         </motion.div>
 
-        {/* Testimonial Slider */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl shadow-xl p-8 md:p-12 theme-transition"
-                style={{
-                  backgroundColor: 'var(--color-bg-card)',
-                  boxShadow: '0 10px 40px var(--shadow-color)'
-                }}
-              >
-                <FaQuoteLeft
-                  className="text-4xl opacity-20 mb-6"
-                  style={{ color: 'var(--color-primary)' }}
-                />
-
-                <p className="text-lg md:text-xl leading-relaxed mb-8 font-montserrat theme-text-secondary">
-                  {testimonials[currentIndex].content}
-                </p>
-
-                {/* Rating */}
-                <div className="flex gap-1 mb-6">
-                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <FaStar key={`star-${i}`} className="text-yellow-400 text-xl" />
-                  ))}
-                </div>
-
-                {/* Author */}
-                <div className="flex items-center gap-4">
-                  <Avatar
-                    src={testimonials[currentIndex].image}
-                    name={testimonials[currentIndex].name}
-                  />
-                  <div>
-                    <h4 className="font-bold text-lg font-exo-2 theme-text">
-                      {testimonials[currentIndex].name}
-                    </h4>
-                    <p className="theme-text-secondary">
-                      {testimonials[currentIndex].role}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation Buttons */}
-            <div className="flex justify-center gap-4 mt-8">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={prevTestimonial}
-                className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-colors duration-300"
-                style={{
-                  backgroundColor: 'var(--color-bg-card)',
-                  color: 'var(--color-text-primary)'
-                }}
-                aria-label="Previous testimonial"
-              >
-                <FaChevronLeft />
-              </motion.button>
-
-              {/* Dots */}
-              <div className="flex items-center gap-2">
-                {testimonials.map((testimonial, index) => (
-                  <button
-                    key={testimonial.id}
-                    onClick={() => setCurrentIndex(index)}
-                    className="w-3 h-3 rounded-full transition-colors duration-300"
-                    style={{
-                      backgroundColor: index === currentIndex
-                        ? 'var(--color-primary)'
-                        : 'var(--color-border)'
-                    }}
-                    aria-label={`Go to testimonial from ${testimonial.name}`}
-                  />
-                ))}
+        {/* Client Cards */}
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+          {clientWork.map((client, index) => (
+            <motion.div
+              key={client.company}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="rounded-2xl p-7 border transition-all duration-300 hover:shadow-xl theme-transition"
+              style={{
+                backgroundColor: 'var(--color-bg-card)',
+                borderColor: 'var(--color-border)',
+                borderTop: `3px solid ${client.color}`,
+              }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span
+                  className="text-xs font-bold px-2.5 py-0.5 rounded-full text-white"
+                  style={{ backgroundColor: client.color }}
+                >
+                  {client.type}
+                </span>
+                <span className="text-xs theme-text-muted">{client.period}</span>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={nextTestimonial}
-                className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-colors duration-300"
-                style={{
-                  backgroundColor: 'var(--color-bg-card)',
-                  color: 'var(--color-text-primary)'
-                }}
-                aria-label="Next testimonial"
+              <h3 className="text-xl font-bold font-exo-2 mb-1 theme-text">
+                {client.company}
+              </h3>
+              <p className="text-sm mb-4" style={{ color: client.color }}>
+                {client.role}
+              </p>
+
+              <FaQuoteLeft
+                className="text-lg opacity-20 mb-2"
+                style={{ color: client.color }}
+              />
+              <p className="text-sm theme-text-secondary leading-relaxed mb-5">
+                {client.quote}
+              </p>
+
+              <div
+                className="pt-4 border-t"
+                style={{ borderColor: 'var(--color-border)' }}
               >
-                <FaChevronRight />
-              </motion.button>
-            </div>
-          </div>
+                <p className="text-xs font-semibold theme-text-muted mb-2">Projects Delivered:</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {client.projects.map((project) => (
+                    <span
+                      key={project}
+                      className="text-xs px-2 py-0.5 rounded-full"
+                      style={{
+                        backgroundColor: `${client.color}15`,
+                        color: client.color,
+                      }}
+                    >
+                      {project}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-lg theme-text-secondary mb-6">
+            Want to be the next success story? Let's build something great together.
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold font-exo-2 transition-all duration-300 hover:opacity-90 hover:shadow-lg active:scale-[0.98]"
+            style={{ backgroundColor: 'var(--color-primary)' }}
+          >
+            <FaHandshake className="text-lg" />
+            Start a Project
+            <FaArrowRight className="text-sm" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

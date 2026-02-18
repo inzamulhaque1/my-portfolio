@@ -24,6 +24,7 @@ const Navbar = () => {
   const links = useMemo(() => [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
     { href: "#services", label: "Services" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },

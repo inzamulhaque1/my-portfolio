@@ -57,7 +57,7 @@ const services = [
     description:
       'Admin panels, analytics dashboards, and SaaS platforms with data visualization, user management, and subscription systems.',
     highlights: ['Admin Dashboards', 'Data Visualization', 'Subscription Systems'],
-    proof: 'Contributed to Bruskee AI task management & Launchier design system',
+    proof: 'Built Bruskee SaaS with Prisma + Redis & Launchier design system at ShareTasking',
     color: 'from-purple-500 to-pink-500',
   },
   {
@@ -72,9 +72,9 @@ const services = [
 ];
 
 const trustStats = [
-  { icon: <FaProjectDiagram />, value: '9+', label: 'Projects Delivered' },
-  { icon: <FaUsers />, value: '3+', label: 'Production Clients' },
-  { icon: <FaHandshake />, value: '2+', label: 'Team Collaborations' },
+  { icon: <FaProjectDiagram />, value: '14+', label: 'Projects Shipped' },
+  { icon: <FaUsers />, value: '2', label: 'Companies Worked' },
+  { icon: <FaHandshake />, value: '3+', label: 'Clients Served' },
   { icon: <FaCheckCircle />, value: '100%', label: 'Completion Rate' },
 ];
 
