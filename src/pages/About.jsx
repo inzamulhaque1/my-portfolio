@@ -113,7 +113,8 @@ const About = () => {
                 </span>
               </h3>
               <p className="text-xl font-montserrat theme-text-secondary">
-                Full-Stack Web Developer
+                Jr. Full-Stack Web Developer at{' '}
+                <span className="font-bold" style={{ color: 'var(--color-primary)' }}>ShareTasking</span>
               </p>
 
               <div className="prose prose-lg font-exo-2 theme-text-secondary space-y-4">
