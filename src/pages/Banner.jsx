@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { SiFiverr } from "react-icons/si";
 import { BiDownArrow } from "react-icons/bi";
 import myImage from "../assets/images/banner/my-img.png";
 import TypeWriter from "../components/TypeWriter";
@@ -106,15 +107,25 @@ const Banner = () => {
               Crafting Next-Level Web Experiences for a World That Never Stands Still.
             </motion.p>
 
-            <div>
+            <div className="flex flex-wrap gap-4">
               <a
                 href="/resume.pdf"
                 download
-                className="inline-block px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 text-white hover:opacity-90 hover:scale-105"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 text-white hover:opacity-90 hover:scale-105"
                 style={{ backgroundColor: 'var(--color-primary)' }}
                 aria-label="Download Resume PDF"
               >
                 Download Resume
+              </a>
+              <a
+                href="https://www.fiverr.com/inzamul1002"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 text-white hover:opacity-90 hover:scale-105"
+                style={{ backgroundColor: '#1dbf73' }}
+                aria-label="Hire me on Fiverr"
+              >
+                <SiFiverr className="text-lg" /> Hire Me on Fiverr
               </a>
             </div>
 
