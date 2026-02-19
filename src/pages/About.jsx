@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import { FaDownload, FaUser, FaBuilding, FaBriefcase, FaProjectDiagram } from 'react-icons/fa';
+import { SiFiverr } from 'react-icons/si';
 import myimg from '../assets/images/about/myimg2.jpeg';
 import GitHubStats from '../components/GitHubStats';
 
@@ -169,6 +170,19 @@ const About = () => {
                 aria-label="Go to contact section"
               >
                 <FaUser className="text-lg" /> Hire Me
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://www.fiverr.com/inzamul1002"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex font-exo-2 items-center gap-2 px-8 py-4 rounded-lg transition-colors shadow-lg w-full sm:w-auto justify-center text-white"
+                style={{ backgroundColor: '#1dbf73' }}
+                aria-label="Hire me on Fiverr"
+              >
+                <SiFiverr className="text-lg" /> Hire Me on Fiverr
               </motion.a>
             </div>
           </motion.div>
